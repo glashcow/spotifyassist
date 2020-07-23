@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'spotifyassist/styles.css' %}"/>
+        <meta name="viewport" content="width=device_width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% block head %} {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="mySidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="/home">Search Artists</a>
+                    <a href="/artistslists">View Lists You have Already Made/ Make New Lists</a>
+                    <a href="/playlists">Generate Playlists</a>
+                    <a href="/playlistlist">Export To Spotify</a>
+                    <a id="bottomplz" href="/logout">Logout</a>
+                </div>
+                <div id="main">
+                  <button class="openbtn" onclick="openNav()">&#9776; Navigate</button>
+                </div>
+            </div>
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+          document.getElementById("main").style.marginLeft = "0";
+        } 
+    </script>
+</html>

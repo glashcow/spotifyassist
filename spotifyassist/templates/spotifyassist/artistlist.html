@@ -1,0 +1,41 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/artistlist.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-lg-9 col-sm-12" id="personalartistlists">
+        <div id="artistlistlist">
+            <ul>
+                <h5 id="artistlisttitle">Your Artist Lists:</h5>
+                {% for list in artistlists %}
+                <li><a href="" class="list-link" id="{{list}}" data-artistlist="{{list}}">{{list}}</a></li>
+                {% endfor %}  
+            </ul>
+            <form id="addlist">
+                <input type="text" autocomplete="off" autofocus placeholder="Add a new list" id="newlistquery">
+                <input type="submit">
+            </form>
+            <p id="listmessage"></p>
+        </div>
+        <div id="specificlist">
+            <h5>Click Artist to Remove From List:</h5>
+            <ul id="specificlistitems">
+            </ul>
+        </div>
+        <div>
+            <p>Click to view the artists in each list, then click specific artists to remove them from the list</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+

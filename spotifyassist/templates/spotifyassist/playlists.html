@@ -1,0 +1,24 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/playlistlist.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div id="playlistview">
+        <ul>
+        {% for list in playlists %}
+            <li><a href="/viewplaylist/{{list.id}}">{{list}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock %}

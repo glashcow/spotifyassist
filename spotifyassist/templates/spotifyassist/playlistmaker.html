@@ -1,0 +1,44 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/playlist.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div id="playlistGenerator" class="col-lg-6 col-sm-12">
+        <form id="playlistGeneratorForm" method="post">
+            {% csrf_token %}    
+            <select id="formlist" name="list">
+                {% for list in artistlists %}
+                <option value="{{list}}">{{list}}</option>
+                {% endfor %}
+            </select>
+            <select id="formartists" name="artists">
+                <option value="inlist">Just chosen Artists</option>
+                <option value="insimilar">Similar To Chosen Artists</option>
+            </select>
+            <select id="formtype" name="type">
+                <option value="toptracks">Top tracks from the artist
+                </option>
+                <option value="alltracks">All tracks from the artist</option>
+            </select>
+            <label for="count">Number of tracks:</label>
+            <input type="number" id="count" name="count" min="0">
+            <input type="submit" value="Generate Playlist">
+         </form>  
+        <p id ="littleinfobit">Select parameters and generate the plalyist. If you're not happy with the selections, simply generate again to reroll a new playlist! Note: generation can take time if you ask for a lot of tracks, also deeper cuts will take longer to compute than top tracks.</p>
+    </div>
+    <div id="playlistDisplay" class="col-lg-6 col-sm-12">
+        <ul id="generatedPlaylist">
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock %}

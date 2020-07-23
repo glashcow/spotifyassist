@@ -1,0 +1,33 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-lg-9 col-sm-12" id="artistSearchdiv">
+        <form id="artistSearch">
+            <input type="text" autocomplete="off" autofocus placeholder="Search" id="searchquery">
+            <input type="submit">
+        </form>
+        <h5 id="currentList"></h5><h6 id="message"></h6>
+        <ul id="artistSearchResults"></ul>
+    </div> 
+    <div class="col-lg-3" id="artistlistpanel">
+        <ul id="artistlists">
+            {% for list in artistlists %}
+            <li><a href="" class="nav-link" id="{{list}}" data-list="{{list}}">{{list}}</a></li>
+            {% endfor %}
+            <p>Click specific list to add artists to that list</p>
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock %}

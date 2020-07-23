@@ -1,0 +1,29 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/playlistlist.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div id="playlistview">
+        <ul>
+        {% for track in tracks %}
+            <li>{{track}}</li>
+        {% endfor %}
+        </ul>
+        <form action="{% url 'exportPlaylist' %}" method="post">
+            {% csrf_token %} 
+            <input type="radio" class="hide" name="playlilstid" value="{{playlistid}}" checked="checked">
+            <input type="submit" value="Export to Spotify">
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

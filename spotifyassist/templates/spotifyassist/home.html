@@ -1,0 +1,18 @@
+{% extends "spotifyassist/layout.html" %}
+{% load static %}
+
+{% block title %} Spotify Assist {% endblock %}
+
+{% block head %} <script type="text/javascript" src="{% static 'spotifyassist/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<p id="desc">Welcome to Spotify Playlist Assist. Sick of daily mixes and too tired to make your own playlists for car journeys or excercise? Look no further. You make lists of artists who are on spotify, then you randomly generate playlists from these artists, using their top tracks or deep cuts, you can even choose to only use related artists to your artists...</p>
+<a href="/register">Sign Up</a><br><br>
+<p>Already a member?</p>
+<a href="/login">Login</a><br>
+<a href="/home">Home</a>
+
+
+{% endblock %}
